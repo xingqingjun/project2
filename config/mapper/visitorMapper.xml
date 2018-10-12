@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.iotek.com.iotek.xqj.dao.VisitorDao">
+    <select id="findVisitorByName" resultType="com.iotek.com.iotek.xqj.entity.Visitor">
+        select * from visitor where name=#{name}
+    </select>
+    <select id="findVisitorByNameAndPassword" resultType="com.iotek.com.iotek.xqj.entity.Visitor" parameterType="com.iotek.com.iotek.xqj.entity.Visitor">
+        select * from visitor where name=#{name} and password=#{password}
+    </select>
+    <insert id="addVisitor" parameterType="com.iotek.com.iotek.xqj.entity.Visitor">
+        insert into visitor(name,password)VALUE (#{name},#{password})
+    </insert>
+    <insert id="addResume">
+        insert into
+        resume(name,sex,age,education,phone,email,positon,dept,political,last_job,work_experience,salary,hobby)
+        values
+        (#{name},#{sex},#{age},#{education},#{phone},#{email},#{positon},#{dept},#{political},#{lastJob},#{workExperience},#{salary},#{hobby})
+    </insert>
+    <select id="findId">
+        select visitor.id from visitor  where name=#{name}
+    </select>
+    <select id="lookResume" resultType="com.iotek.com.iotek.xqj.entity.Resume" parameterType="int">
+        select r.name name,r.sex sex,r.age age,r.education education,r.phone phone,r.email email,r.positon positon,r.dept dept,r.political political,r.last_job lastJob,r.work_experience workExperience,r.salary salary,r.hobby hobby from resume r where id=#{id}
+    </select>
+</mapper>
