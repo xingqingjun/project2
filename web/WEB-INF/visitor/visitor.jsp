@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Machenike
@@ -10,18 +11,36 @@
 <head>
     <title>Title</title>
     <script>
-        var e1 = document.getElementById('e1');
-        edu = [];
-        edu[0] = ['主管'];
-        edu[1] = ['人事'];
-        edu[2] = ['会计'];
-        function func(m){
-            e1.length = 1;
-            for (var i = 0; i < edu[m].length; i++) {
-                var op = new Option(edu[m][i],i);
-                e1.add(op);
-            };
-        }
+        $(function () {
+          $("#e1").click(function () {
+              var id=$(".e1").value
+             $.ajax({
+                 url:"${pageContext.request.context}/visitor/positon",
+                 type:"post",
+                 date:{"id":id},
+                 datetype:"json",
+                 sucess:function (date) {
+                     for(i=0;i<date.length;i++){
+                         $("#e3").append("<option value='"+data[i]+"'>"+data[i]+"</option>")
+                     }
+
+                 }
+
+             })
+          })
+        })
+//        var e1 = document.getElementById('e1');
+//        edu = [];
+//        edu[0] = ['主管'];
+//        edu[1] = ['人事'];
+//        edu[2] = ['会计'];
+//        function func(m){
+//            e1.length = 1;
+//            for (var i = 0; i < edu[m].length; i++) {
+//                var op = new Option(edu[m][i],i);
+//                e1.add(op);
+//            };
+//        }
     </script>
 </head>
 <body>
@@ -57,17 +76,17 @@
     <tr>
         <td>应聘职位</td>
         <td>
-            <select id="e1" onchange="city">
-                <option value="0">人事部</option>
-                <option value="1">行政部</option>
-                <option value="2">人事部</option>
+            <select id="e1" name="dept">
+                <c:forEach items="${sessionScope.dept}" var="dept">
+                    <option value="${dept.id}">${dept.name}</option>
+                </c:forEach>
             </select>
-            <select>
-                <option></option>
+            <select id="e2" name="positon">
+                <option id="e3"></option>
             </select>
         </td>
         <td>
-            <select>
+            <select name="political">
                 <option>普通群众</option>
                 <option>共青团员</option>
                 <option>中共党员</option>
@@ -76,14 +95,14 @@
     </tr>
     <tr>
         <td>上份工作</td>
-        <td><input type="text" name="work"></td>
+        <td><input type="text" name="lastJob"></td>
         <td>工作经验</td>
-        <td><input type="text" name="time"></td>
+        <td><input type="text" name="workExperience"></td>
     </tr>
     <tr>
         <td>期望薪资</td>
         <td>
-            <select>
+            <select name="salary">
             <option>3000-4000</option>
             <option>4000-5000</option>
             <option>5000-6000</option>

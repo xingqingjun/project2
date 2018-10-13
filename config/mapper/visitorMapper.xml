@@ -22,4 +22,5 @@
     <select id="lookResume" resultType="com.iotek.com.iotek.xqj.entity.Resume" parameterType="int">
         select r.name name,r.sex sex,r.age age,r.education education,r.phone phone,r.email email,r.positon positon,r.dept dept,r.political political,r.last_job lastJob,r.work_experience workExperience,r.salary salary,r.hobby hobby from resume r where id=#{id}
     </select>
+
 </mapper>

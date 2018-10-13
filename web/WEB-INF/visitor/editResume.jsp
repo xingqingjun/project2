@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Machenike
@@ -9,6 +10,26 @@
 <html>
 <head>
     <title>Title</title>
+    <script>
+        $(function () {
+            $("#e1").click(function () {
+                var id=$(".e1").value
+                $.ajax({
+                    url:"${pageContext.request.context}/visitor/positon",
+                    type:"post",
+                    date:{"id":id},
+                    datetype:"json",
+                    sucess:function (date) {
+                        for(i=0;i<date.length;i++){
+                            $("#e2").append("<option value='"+data[i]+"'>"+data[i]+"</option>")
+                        }
+
+                    }
+
+                })
+            })
+        })
+    </script>
 </head>
 <body>
 <form action="visitor/editResume">
@@ -20,63 +41,75 @@
             <td>真实姓名</td>
             <td><input type="text" name="name" value="${sessionScope.resume.name}"></td>
             <td>性别</td>
-            <td><input type="radio" name="sex" value="男">
-                <input type="radio"name="sex" value="女"></td>
+            <td>
+                <c:choose>
+                    <c:when test="${'男'eq sessionScope.resume.sex}">
+                        <input id="a1" type="radio" name="sex" value="男" checked="checked">
+                        <input id="a2" type="radio"name="sex" value="女">
+                    </c:when>
+                </c:choose>
+                <c:choose>
+                    <c:when test="${'女'eq sessionScope.resume.sex}">
+                        <input id="a1" type="radio" name="sex" value="男">
+                        <input id="a2" type="radio"name="sex" value="女" checked="checked">
+                    </c:when>
+                </c:choose>
+            </td>
         </tr>
         <tr>
             <td>年龄</td>
             <td><input type="text" name="age"></td>
             <td>学历</td>
             <td><select name="education">
-                <option>大专</option>
-                <option>本科</option>
-                <option>研究生</option>
-                <option>博士</option>
+                <option value="大专"<c:if test="${sessionScope.resume.education eq '大专'}">selected</c:if>>大专</option>
+                <option value="本科"<c:if test="${sessionScope.resume.education eq '本科'}">selected</c:if>>本科</option>
+                <option value="研究生"<c:if test="${sessionScope.resume.education eq '研究生'}">selected</c:if>>研究生</option>
+                <option value="博士"<c:if test="${sessionScope.resume.education eq '博士'}">selected</c:if>>博士</option>
             </select></td>
         </tr>
         <tr>
             <td>联系方式</td>
-            <td><input type="text" name="number"></td>
+            <td><input type="text" name="phone" value="${sessionScope.resume.phone}"></td>
             <td>e-mail</td>
-            <td><input type="text" name="email"></td>
+            <td><input type="text" name="email" value="${sessionScope.resume.email}"></td>
         </tr>
         <tr>
             <td>应聘职位</td>
             <td>
-                <select id="e1" onchange="city">
-                    <option value="0">人事部</option>
-                    <option value="1">行政部</option>
-                    <option value="2">人事部</option>
+                <select id="e1" name="dept">
+                    <c:forEach items="${sessionScope.dept}" var="dept">
+                        <option value="${dept.name}"<c:if test="${sessionScope.resume.dept eq dept.name}">selected</c:if></option>
+                    </c:forEach>
                 </select>
                 <select>
-                    <option></option>
+                    <option id="e2" name="positon"></option>
                 </select>
             </td>
             <td>
-                <select>
-                    <option>普通群众</option>
-                    <option>共青团员</option>
-                    <option>中共党员</option>
+                <select name="political">
+                    <option value="普通群众"<c:if test="${sessionScope.resume.political eq '普通群众'}">selected</c:if>>普通群众</option>
+                    <option value="共青团员"<c:if test="${sessionScope.resume.political eq '共青团员'}">selected</c:if>>共青团员</option>
+                    <option value="中共党员" <c:if test="${sessionScope.resume.political eq '中共党员'}">selected</c:if>>中共党员</option>
                 </select>
             </td>
         </tr>
         <tr>
             <td>上份工作</td>
-            <td><input type="text" name="work"></td>
+            <td><input type="text" name="lastJob" value="${sessionScope.resume.lastJob}"></td>
             <td>工作经验</td>
-            <td><input type="text" name="time"></td>
+            <td><input type="text" name="workExperience" value="${sessionScope.resume.workExperience}"></td>
         </tr>
         <tr>
             <td>期望薪资</td>
             <td>
-                <select>
-                    <option>3000-4000</option>
-                    <option>4000-5000</option>
-                    <option>5000-6000</option>
+                <select name="salary">
+                    <option value="3000-4000" <c:if test="${sessionScope.resume.salary eq '3000-4000'}">selected</c:if>>3000-4000</option>
+                    <option value="4000-5000"<c:if test="${sessionScope.resume.salary eq '4000-5000'}">selected</c:if>>4000-5000</option>
+                    <option value="5000-6000"<c:if test="${sessionScope.resume.political eq '5000-6000'}">selected</c:if>>5000-6000</option>
                 </select>
             </td>
             <td>兴趣爱好</td>
-            <td><input type="text" name="habby"></td>
+            <td><input type="text" name="habby" value="${sessionScope.resume.habby}"></td>
         </tr>
         <tr>
             <td colspan="2"><input type="submit" value="保存"></td>

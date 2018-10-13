@@ -13,4 +13,5 @@ public interface VisitorService {
     public void addVisitor(Visitor visitor);
     public void addResume(Resume resume);
     public Resume lookResume(int id);
+
 }

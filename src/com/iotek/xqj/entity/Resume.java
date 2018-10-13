@@ -11,8 +11,8 @@ public class Resume {
     private String education;//学历
     private int phone;
     private String email;
-    private String positon;//职位
     private String dept;//部门
+    private String positon;//职位
     private String political;//政治面貌
     private String lastJob;//上份工作
     private String workExperience;//工作经验
@@ -22,23 +22,7 @@ public class Resume {
     public Resume() {
     }
 
-    public Resume(String name, String sex, int age, String education, int phone, String email, String positon, String dept, String political, String lastJob, String workExperience, String salary, String habby) {
-        this.name = name;
-        this.sex = sex;
-        this.age = age;
-        this.education = education;
-        this.phone = phone;
-        this.email = email;
-        this.positon = positon;
-        this.dept = dept;
-        this.political = political;
-        this.lastJob = lastJob;
-        this.workExperience = workExperience;
-        this.salary = salary;
-        this.habby = habby;
-    }
-
-    public Resume(int id, String name, String sex, int age, String education, int phone, String email, String positon, String dept, String political, String lastJob, String workExperience, String salary, String habby) {
+    public Resume(int id, String name, String sex, int age, String education, int phone, String email, String dept, String positon, String political, String lastJob, String workExperience, String salary, String habby) {
         this.id = id;
         this.name = name;
         this.sex = sex;
@@ -46,8 +30,24 @@ public class Resume {
         this.education = education;
         this.phone = phone;
         this.email = email;
-        this.positon = positon;
         this.dept = dept;
+        this.positon = positon;
+        this.political = political;
+        this.lastJob = lastJob;
+        this.workExperience = workExperience;
+        this.salary = salary;
+        this.habby = habby;
+    }
+
+    public Resume(String name, String sex, int age, String education, int phone, String email, String dept, String positon, String political, String lastJob, String workExperience, String salary, String habby) {
+        this.name = name;
+        this.sex = sex;
+        this.age = age;
+        this.education = education;
+        this.phone = phone;
+        this.email = email;
+        this.dept = dept;
+        this.positon = positon;
         this.political = political;
         this.lastJob = lastJob;
         this.workExperience = workExperience;
@@ -111,20 +111,20 @@ public class Resume {
         this.email = email;
     }
 
-    public String getPositon() {
-        return positon;
-    }
-
-    public void setPositon(String positon) {
-        this.positon = positon;
-    }
-
     public String getDept() {
         return dept;
     }
 
     public void setDept(String dept) {
         this.dept = dept;
+    }
+
+    public String getPositon() {
+        return positon;
+    }
+
+    public void setPositon(String positon) {
+        this.positon = positon;
     }
 
     public String getPolitical() {
@@ -177,8 +177,8 @@ public class Resume {
                 ", education='" + education + '\'' +
                 ", phone=" + phone +
                 ", email='" + email + '\'' +
-                ", positon='" + positon + '\'' +
                 ", dept='" + dept + '\'' +
+                ", positon='" + positon + '\'' +
                 ", political='" + political + '\'' +
                 ", lastJob='" + lastJob + '\'' +
                 ", workExperience='" + workExperience + '\'' +
