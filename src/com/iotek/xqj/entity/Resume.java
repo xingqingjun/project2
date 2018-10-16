@@ -1,10 +1,12 @@
 package com.iotek.xqj.entity;
 
+import java.sql.Date;
+
 /**
  * Created by Machenike on 2018/10/12.
  */
 public class Resume {
-    private int id;
+    private int id;//游客id
     private String name;
     private String sex;
     private int age;
@@ -18,8 +20,59 @@ public class Resume {
     private String workExperience;//工作经验
     private String salary;
     private String habby;
+    private String state;//提交状态
+    private Date time;//投递时间
+    private String interview="未面试";//面试状态
+    private String look="未查看";//查看状态
+    private Date interviewTime;//面试时间
+    private String inform="未通知";//是否通知面试
 
     public Resume() {
+    }
+
+    public Date getTime() {
+        return time;
+    }
+
+    public String getInterview() {
+        return interview;
+    }
+
+    public void setInterview(String interview) {
+        this.interview = interview;
+    }
+
+    public String getLook() {
+        return look;
+    }
+
+    public void setLook(String look) {
+        this.look = look;
+    }
+
+    public Resume(int id, String name, String sex, int age, String education, int phone, String email, String dept, String positon, String political, String lastJob, String workExperience, String salary, String habby, String state, Date time, String interview, String look) {
+        this.id = id;
+        this.name = name;
+        this.sex = sex;
+        this.age = age;
+        this.education = education;
+        this.phone = phone;
+        this.email = email;
+        this.dept = dept;
+        this.positon = positon;
+        this.political = political;
+        this.lastJob = lastJob;
+        this.workExperience = workExperience;
+        this.salary = salary;
+        this.habby = habby;
+        this.state = state;
+        this.time = time;
+        this.interview = interview;
+        this.look = look;
+    }
+
+    public void setTime(Date time) {
+        this.time = time;
     }
 
     public Resume(int id, String name, String sex, int age, String education, int phone, String email, String dept, String positon, String political, String lastJob, String workExperience, String salary, String habby) {
@@ -37,6 +90,14 @@ public class Resume {
         this.workExperience = workExperience;
         this.salary = salary;
         this.habby = habby;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
     }
 
     public Resume(String name, String sex, int age, String education, int phone, String email, String dept, String positon, String political, String lastJob, String workExperience, String salary, String habby) {

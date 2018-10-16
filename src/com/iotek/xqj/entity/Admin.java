@@ -1,21 +1,21 @@
 package com.iotek.xqj.entity;
 
 /**
- * Created by Machenike on 2018/10/12.
+ * Created by Machenike on 2018/10/13.
  */
-public class Positon {
+public class Admin {
     private int id;
-    private int deptId;//≤ø√≈id
     private String name;
+    private String password;
 
-    public Positon() {
+    public Admin() {
     }
 
-    public Positon(int id, int deptId, String name) {
-        this.id = id;
-        this.deptId = deptId;
+    public Admin(String name, String password) {
         this.name = name;
+        this.password = password;
     }
+
 
     public int getId() {
         return id;
@@ -25,13 +25,6 @@ public class Positon {
         this.id = id;
     }
 
-    public int getDeptId() {
-        return deptId;
-    }
-
-    public void setDeptId(int deptId) {
-        this.deptId = deptId;
-    }
 
     public String getName() {
         return name;
@@ -41,12 +34,20 @@ public class Positon {
         this.name = name;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     @Override
     public String toString() {
-        return "Positon{" +
+        return "Admin{" +
                 "id=" + id +
-                ", deptId=" + deptId +
                 ", name='" + name + '\'' +
+                ", password='" + password + '\'' +
                 '}';
     }
 }

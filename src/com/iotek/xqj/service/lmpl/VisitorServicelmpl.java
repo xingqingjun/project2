@@ -7,6 +7,8 @@ import com.iotek.xqj.service.VisitorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Date;
+
 /**
  * Created by Machenike on 2018/10/11.
  */
@@ -44,4 +46,20 @@ public class VisitorServicelmpl implements VisitorService {
     public Resume lookResume(int id) {
         return visitorDao.lookResume(id);
     }
+
+    @Override
+    public void editResume(int id,Resume resume) {
+        visitorDao.editResume(id,resume);
+    }
+
+    @Override
+    public void editPassword(int id,String password) {
+        visitorDao.editPassword(id,password);
+    }
+
+    @Override
+    public Resume lookInform(int id) {
+        return visitorDao.lookResume(id);
+    }
+
 }

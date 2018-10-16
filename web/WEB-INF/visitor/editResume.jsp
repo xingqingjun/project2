@@ -17,10 +17,10 @@
                 $.ajax({
                     url:"${pageContext.request.context}/visitor/positon",
                     type:"post",
-                    date:{"id":id},
-                    datetype:"json",
-                    sucess:function (date) {
-                        for(i=0;i<date.length;i++){
+                    data:{"id":id},
+                    datatype:"json",
+                    sucess:function (data) {
+                        for(i=0;i<data.length;i++){
                             $("#e2").append("<option value='"+data[i]+"'>"+data[i]+"</option>")
                         }
 
@@ -33,6 +33,7 @@
 </head>
 <body>
 <form action="visitor/editResume">
+    <input  type="hidden" name="id" value="${sessionScope.resume.id}">
     <table>
         <tr>
             <td colspan="4">简历</td>
@@ -82,7 +83,7 @@
                     </c:forEach>
                 </select>
                 <select>
-                    <option id="e2" name="positon"></option>
+                    <option id="e2" name="positon" value="${sessionScope.resume.positon}"></option>
                 </select>
             </td>
             <td>
@@ -105,7 +106,7 @@
                 <select name="salary">
                     <option value="3000-4000" <c:if test="${sessionScope.resume.salary eq '3000-4000'}">selected</c:if>>3000-4000</option>
                     <option value="4000-5000"<c:if test="${sessionScope.resume.salary eq '4000-5000'}">selected</c:if>>4000-5000</option>
-                    <option value="5000-6000"<c:if test="${sessionScope.resume.political eq '5000-6000'}">selected</c:if>>5000-6000</option>
+                    <option value="5000-6000"<c:if test="${sessionScope.resume.salary eq '5000-6000'}">selected</c:if>>5000-6000</option>
                 </select>
             </td>
             <td>兴趣爱好</td>

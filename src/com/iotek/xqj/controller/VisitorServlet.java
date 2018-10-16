@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
 import java.io.PrintWriter;
+import java.sql.Date;
 import java.util.List;
 
 /**
@@ -33,7 +34,6 @@ public class VisitorServlet {
     @RequestMapping("findVisitor")
     @ResponseBody
     public String findVisitor(String name){
-
         if(name!=null){
             Visitor visitor=visitorService.findVisitorByName(name);
             if(visitor==null){
@@ -46,11 +46,21 @@ public class VisitorServlet {
             return "emtity";
         }
     }
+    @RequestMapping("inputRegist")
+    public String inputRegist(){
+        return "visitor/regist";
+    }
+    @RequestMapping("inputLogin")
+    public String inputLogin(){
+        return "visitor/login";
+    }
     @RequestMapping("login")
     public String login(Visitor visitor, HttpSession session){
         Visitor visitor1=visitorService.findVisitorByNameAndPassword(visitor);
         if(visitor!=null){
+            System.out.println(111);
             int id=visitorService.findId(visitor.getName());
+            System.out.println(222);
             session.setAttribute("id",id);
             return "visitor/visitorView";
         }else {
@@ -80,6 +90,11 @@ public class VisitorServlet {
     public String input(){
         return "visitor/regist";
     }
+    @RequestMapping("aResume")
+    public String aResume(int id,HttpSession session){
+        session.setAttribute("id",id);
+        return "visitor/visitor";
+    }
     @RequestMapping("addResume")
     public String addResume(Resume resume,int id,HttpSession session){
         resume.setDept(deptService.findDeptNameById(id));
@@ -91,6 +106,7 @@ public class VisitorServlet {
     @RequestMapping("showResume")
     public String showResume(int id,HttpSession session){
         Resume resume=visitorService.lookResume(id);
+        resume.setLook("已查看");
         session.setAttribute("resume",resume);
         return "visitor/lookResume";
     }
@@ -112,6 +128,38 @@ public class VisitorServlet {
         List<Positon> list1=positonService.queryAllPositon(deptId);
         Object list=JSON.toJSON("list1");
         printWriter.print(list);//职位
+    }
+    @RequestMapping("editResume")
+    public String editResume(int id,Resume resume){
+        visitorService.editResume(id,resume);
+        return "visitor/visitorView";
+    }
+    @RequestMapping("ePassword")
+    public String ePassword(int id,HttpSession session){
+        session.setAttribute("id",id);
+        return "visitor/editPassword";
+    }
+    @RequestMapping("editPassword")
+    public String editPassword(int id,String password){
+        visitorService.editPassword(id,password);
+        return "visitor/visitorView";
+    }
+    @RequestMapping("inputMainView")
+    public String inputMainView(){
+        return "forward:mainView.jsp";
+    }
+    @RequestMapping("put")
+    public String put(int id){
+        Resume resume=visitorService.lookResume(id);
+        resume.setState("已提交");
+        resume.setTime(new Date(System.currentTimeMillis()));
+        return "forward:visitorView";
+    }
+    @RequestMapping("lookInform")
+    public String lookInform(int id,HttpSession session){
+        Resume resume=visitorService.lookInform(id);
+        session.setAttribute("resume",resume);
+        return "visitor/lookInform";
     }
 
 }

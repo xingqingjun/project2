@@ -17,10 +17,10 @@
              $.ajax({
                  url:"${pageContext.request.context}/visitor/positon",
                  type:"post",
-                 date:{"id":id},
-                 datetype:"json",
-                 sucess:function (date) {
-                     for(i=0;i<date.length;i++){
+                 data:{"id":id},
+                 datatype:"json",
+                 sucess:function (data) {
+                     for(i=0;i<data.length;i++){
                          $("#e3").append("<option value='"+data[i]+"'>"+data[i]+"</option>")
                      }
 
@@ -29,22 +29,11 @@
              })
           })
         })
-//        var e1 = document.getElementById('e1');
-//        edu = [];
-//        edu[0] = ['主管'];
-//        edu[1] = ['人事'];
-//        edu[2] = ['会计'];
-//        function func(m){
-//            e1.length = 1;
-//            for (var i = 0; i < edu[m].length; i++) {
-//                var op = new Option(edu[m][i],i);
-//                e1.add(op);
-//            };
-//        }
     </script>
 </head>
 <body>
 <form action="visitor/addResume">
+    <input type="hidden" value="${sessionScope.id}" name="id">
 <table>
     <tr>
         <td colspan="4">简历</td>
@@ -112,7 +101,8 @@
         <td><input type="text" name="habby"></td>
     </tr>
     <tr>
-        <td colspan="2"><input type="submit" value="保存"></td>
+        <td colspan="1"><input type="submit" value="保存"></td>
+        <td colspan="1"><a href="visitor/put?id=${sessionScope.resume.id}" id="t1">提交</a></td>
         <td colspan="2"><a href="visitor/visitorView">返回</a> </td>
     </tr>
 </table>

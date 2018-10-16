@@ -9,39 +9,45 @@
 <html>
 <head>
     <title>Title</title>
-    <script type="text/javascript"src="jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="jquery-1.10.2.min.js"></script>
     <script>
-        $("#v1").blur(function () {
-            var name=$("#v1").value()
-            var password=$("#v2").value()
-            var url="${pageContext.request.context}/visitor/findVisitor"
-            var args={"name":name,"password":password}
-            $.post(url,args,function (date) {
-                if(date==""){
-                    //用户存在
-                    $("#s1").innerHTML="用户已存在"
-                }
-                if(date=="emtity"){
-                    $("#s1").innerHTML="用户不能为空"
-                }
-                $("#s1").innerHTML="";
+        $(function () {
+            $("#v1").blur(function () {
+                var name=$("#v1").val();
+                var url="${pageContext.request.contextPath}/visitor/findVisitor"
+                var args={"name":name}
+                $.post(url,args,function (data) {
+                    alert(data)
+
+                    if(data=="emtity"){
+                        $("#s1").text("用户不能为空")
+
+                    }else {
+                        if(data=="no"){
+                            //用户存在
+                            $("#s1").text("用户已存在")
+                        }else {
+                            $("#s1").text("")
+                        }
+                    }
+                })
             })
         })
         $(function () {
             $("#but").click(function () {
-                var name=$("#v1").value
-                var password=$("#v2").value
+                var name=$("#v1").val()
+                var password=$("#v2").val()
                 $.ajax({
                     type: 'post',
-                    url:"${pageContext.request.context}/visitor/log",
+                    url:"${pageContext.request.contextPath}/visitor/log",
                     data: {"name":name,"password":password},
                     dataType:"test",
-                    success:function (date) {
-                        if(date==fail){
-                            $("#s2").innerHTML="登录失败"
+                    success:function (data) {
+                        if(data==fail){
+                            $("#s2").text("登录失败")
                             return false
                         }
-                        $("#s2").innerHTML="";
+                        $("#s2").text("")
                     }
                 })
             })
@@ -50,10 +56,11 @@
 
 </head>
 <body>
-<form action="visitor/login">
-    <input id="v1" type="text" name="name"><span id="s1"></span><br>
-    <input id="v2" type="text" name="password">
-    <span id="s2" style="color: red"></span>
+<form action="/visitor/login">
+    用户：<input id="v1" type="text" name="name">
+    <span id="s1"></span><br>
+    密码：<input id="v2" type="text" name="password">
+    <span id="s2" style="color: red"></span><br>
     <input type="submit" value="登录" >
 </form>
 

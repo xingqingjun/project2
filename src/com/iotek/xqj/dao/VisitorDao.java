@@ -13,4 +13,7 @@ public interface VisitorDao {
     public void addVisitor(Visitor visitor);
     public void addResume(Resume resume);
     public Resume lookResume(int id);
+    public void editResume(int id,Resume resume);
+    public void editPassword(int id,String password);
+    public Resume lookInform(int id);//查看通知
 }
