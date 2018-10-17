@@ -11,7 +11,7 @@
     <title>Title</title>
 </head>
 <body>
-<form action="admin/login">
+<form action="/admin/login">
     管理员账号:<input type="text" name="name">
     管理员密码:<input type="text" name="password">
     <input type="submit" value="管理员登录">

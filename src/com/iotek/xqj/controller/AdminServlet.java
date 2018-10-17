@@ -28,7 +28,7 @@ public class AdminServlet {
     public String login(Admin admin){
         Admin admin1=adminService.byNameAndPassword(admin);
         if(admin!=null){
-            return "admin/mainView";
+            return "forward:inputMainView";
         }else {
             return "admin/login";
         }

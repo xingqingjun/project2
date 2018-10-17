@@ -1,19 +1,21 @@
 <%--
   Created by IntelliJ IDEA.
   User: Machenike
-  Date: 2018/10/11
-  Time: 22:30
+  Date: 2018/10/16
+  Time: 10:57
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <title>$Title$</title>
-    <script type="text/javascript" src="/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="jquery-1.10.2.min.js"></script>
     <script>
         $(function () {
-            $("#v1").blur(function () {
+            $(":text[name='name']").blur(function () {
+                alert("111")
                 var name=$("#v1").val();
+                alert("name"+name)
                 var url="${pageContext.request.contextPath}/visitor/findVisitor"
                 var args={"name":name}
                 $.post(url,args,function (data) {

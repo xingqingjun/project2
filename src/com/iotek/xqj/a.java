@@ -4,6 +4,9 @@ import com.iotek.xqj.dao.AdminDao;
 import com.iotek.xqj.dao.DeptDao;
 import com.iotek.xqj.dao.VisitorDao;
 import com.iotek.xqj.entity.Admin;
+import com.iotek.xqj.entity.Positon;
+import com.iotek.xqj.entity.Visitor;
+import com.iotek.xqj.service.PositonService;
 import com.iotek.xqj.service.VisitorService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -25,12 +28,12 @@ public class a {
     private DeptDao deptDao;
     @Autowired
     private VisitorService visitorService;
+    @Autowired
+    private PositonService positonService;
     @Test
     public void findVisitor(){
-        System.out.println(visitorService.findVisitorByName("aaa"));
-        Admin admin=new Admin("aaa","111");
-        System.out.println(adminDao.byNameAndPassword(admin));
-        System.out.println(deptDao.queryAllDept());
-        System.out.println(visitorService.findId("aaa"));
+        Visitor visitor=new Visitor("aaa");
+        System.out.println(positonService.queryAllPositon(1));
+        System.out.println(visitorService.lookResume(1));
     }
 }

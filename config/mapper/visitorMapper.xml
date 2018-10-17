@@ -20,7 +20,7 @@
         select visitor.id from visitor  where name=#{name}
     </select>
     <select id="lookResume" resultType="com.iotek.xqj.entity.Resume" parameterType="int">
-        select r.name name,r.sex sex,r.age age,r.education education,r.phone phone,r.email email,r.positon positon,r.dept dept,r.political political,r.last_job lastJob,r.work_experience workExperience,r.salary salary,r.hobby hobby from resume r where id=#{id}
+        select r.name name,r.sex sex,r.age age,r.education education,r.phone phone,r.email email,r.positon positon,r.dept dept,r.political political,r.last_job lastJob,r.work_experience workExperience,r.salary salary,r.habby habby from resume r where r.id=#{id}
     </select>
     <update id="editResume">
         update resume r set r.name=#{name},r.sex=#{sex},r.age=#{age},r.education=#{education},r.phont=#{phone},r.email=#{email},r.positon=#{positon},r.dept=#{dept},r.political=#{political},r.last_job lastJob=#{lastJob},r.work_experience workExperience=#{workExperience},r.salary=#{salary},r.habby=#{habby} where id=#{id}

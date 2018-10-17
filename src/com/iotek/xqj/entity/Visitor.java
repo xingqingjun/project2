@@ -11,6 +11,10 @@ public class Visitor {
     public Visitor() {
     }
 
+    public Visitor(String name) {
+        this.name = name;
+    }
+
     public Visitor(String name, String password) {
         this.name = name;
         this.password = password;

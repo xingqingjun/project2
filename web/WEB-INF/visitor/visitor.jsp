@@ -10,31 +10,42 @@
 <html>
 <head>
     <title>Title</title>
+    <script type="text/javascript" src="/jquery-1.10.2.min.js"></script>
     <script>
         $(function () {
-          $("#e1").click(function () {
-              var id=$(".e1").value
+          $("#e1").blur(function () {
+              var id=$("#e1").val()
+              alert(111)
              $.ajax({
-                 url:"${pageContext.request.context}/visitor/positon",
+                 url:"/visitor/positon",
                  type:"post",
-                 data:{"id":id},
+                 data:{"deptId":id},
                  datatype:"json",
-                 sucess:function (data) {
-                     for(i=0;i<data.length;i++){
-                         $("#e3").append("<option value='"+data[i]+"'>"+data[i]+"</option>")
-                     }
+                success:function (data) {
+                     alert(data)
+//                     $.each(data,function (idx,item) {
+//                         alert(111)
+//                         alert(item.name);
+//                         str+="<option>"+item.name+"</option>"
+//                        /* $("#e2").append("<option>"+items.name+"</optio>"*/
+//                     })
+//                   $(str).appendTo(".e2")
+                    $.each(data,function (t,n) {
+                        alert(111)
+                        $("#e2").append("<option>"+n.name+"</optio>")
 
-                 }
-
+                    })
+                }
              })
           })
         })
     </script>
 </head>
 <body>
-<form action="visitor/addResume">
+<a href="/visitor/positon">input</a>
+<form action="/visitor/addResume">
     <input type="hidden" value="${sessionScope.id}" name="id">
-<table>
+<table border="2px">
     <tr>
         <td colspan="4">简历</td>
     </tr>
@@ -42,8 +53,8 @@
         <td>真实姓名</td>
         <td><input type="text" name="name"></td>
         <td>性别</td>
-        <td><input type="radio" name="sex" value="男">
-        <input type="radio"name="sex" value="女"></td>
+        <td>男:<input type="radio" name="sex" value="男">
+        女:<input type="radio"name="sex" value="女"></td>
     </tr>
     <tr>
         <td>年龄</td>
@@ -65,13 +76,12 @@
     <tr>
         <td>应聘职位</td>
         <td>
-            <select id="e1" name="dept">
+            部门:<select id="e1" name="dept">
                 <c:forEach items="${sessionScope.dept}" var="dept">
                     <option value="${dept.id}">${dept.name}</option>
                 </c:forEach>
-            </select>
+            职位:</select>
             <select id="e2" name="positon">
-                <option id="e3"></option>
             </select>
         </td>
         <td>
@@ -103,7 +113,7 @@
     <tr>
         <td colspan="1"><input type="submit" value="保存"></td>
         <td colspan="1"><a href="visitor/put?id=${sessionScope.resume.id}" id="t1">提交</a></td>
-        <td colspan="2"><a href="visitor/visitorView">返回</a> </td>
+        <td colspan="2"><a href="/visitor/visitorView">返回</a> </td>
     </tr>
 </table>
 </form>

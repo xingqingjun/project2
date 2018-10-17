@@ -15,7 +15,7 @@
             $("#e1").click(function () {
                 var id=$(".e1").value
                 $.ajax({
-                    url:"${pageContext.request.context}/visitor/positon",
+                    url:"${pageContext.request.contextPath}/visitor/positon",
                     type:"post",
                     data:{"id":id},
                     datatype:"json",
@@ -45,8 +45,8 @@
             <td>
                 <c:choose>
                     <c:when test="${'男'eq sessionScope.resume.sex}">
-                        <input id="a1" type="radio" name="sex" value="男" checked="checked">
-                        <input id="a2" type="radio"name="sex" value="女">
+                        男:<input id="a1" type="radio" name="sex" value="男" checked="checked">
+                        女:<input id="a2" type="radio"name="sex" value="女">
                     </c:when>
                 </c:choose>
                 <c:choose>
@@ -59,7 +59,7 @@
         </tr>
         <tr>
             <td>年龄</td>
-            <td><input type="text" name="age"></td>
+            <td><input type="text" name="age" value="${sessionScope.resume.age}"></td>
             <td>学历</td>
             <td><select name="education">
                 <option value="大专"<c:if test="${sessionScope.resume.education eq '大专'}">selected</c:if>>大专</option>

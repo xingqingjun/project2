@@ -1,16 +1,39 @@
 <%--
   Created by IntelliJ IDEA.
   User: Machenike
-  Date: 2018/10/12
-  Time: 14:59
+  Date: 2018/10/13
+  Time: 17:10
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <title>Title</title>
+    <script>
+        $(function () {
+            $(".time").click(function () {
+                return false;
+                var $id=$(".s1").val()
+                var $interview=$(".interview").val()
+                $.ajax({
+                    url:"${pageContext.request.contextPath}/admin/editInterview",
+                    data:{"id":$id,"interview":$interview},
+                    type:"post",
+                    datatype:"test",
+                    success:function (data) {
+                        if(data==fail){
+                            return false;
+                            alert("时间有误")
+                        }
+                    }
+                })
+            })
+        })
+    </script>
 </head>
 <body>
+<form action="admin/editInterviewTime">
+
 <table>
     <tr>
         <td colspan="4">${sessionScope.resume.name}的简历</td>
@@ -52,10 +75,13 @@
         <td>${sessionScope.resume.habby}</td>
     </tr>
     <tr>
-        <td><a href="/visitor/edt?id=${sessionScope.resume.id}">修改简历</a></td>
-        <td colspan="2"><a href="visitor/visitorView">返回</a> </td>
+        <td><input id="s1" type="hidden" name="id" value="${sessionScope.id}"></td>
+        面试时间:<td colspan="1"><input id="interview" type="date" name="interviewTime"></td>
+        <td colspan="1"><input id="time" type="submit"value="面试"></td>
+        <td colspan="1"><a href="admin/inputMainView">返回</a> </td>
     </tr>
 </table>
+</form>
 
 </body>
 </html>

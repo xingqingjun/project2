@@ -41,5 +41,6 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="aopalliance (2)" level="project" />
+    <orderEntry type="library" name="fastjson-1.2.2 (2)" level="project" />
   </component>
 </module>
