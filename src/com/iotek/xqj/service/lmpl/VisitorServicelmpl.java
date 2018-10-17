@@ -62,4 +62,14 @@ public class VisitorServicelmpl implements VisitorService {
         return visitorDao.lookResume(id);
     }
 
+    @Override
+    public void editType(int id,String type) {
+        visitorDao.editType(id,type);
+    }
+
+    @Override
+    public void editRecord(int id, String record) {
+        visitorDao.editRecord(id,record);
+    }
+
 }

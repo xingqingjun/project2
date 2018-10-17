@@ -63,6 +63,9 @@ public class VisitorServlet {
             int id=visitorService.findId(visitor.getName());
             System.out.println(222);
             session.setAttribute("id",id);
+            if(visitor1.getType()=="Ô±¹¤"){
+                return "employee/mainview";
+            }
             return "visitor/visitorView";
         }else {
             return "visitor/login";

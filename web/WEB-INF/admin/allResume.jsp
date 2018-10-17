@@ -53,7 +53,7 @@
             <td>${resume.time}</td>
             <td>${resume.look}</td>
             <td>${resume.interview}</td>
-            <td><a href="visitor/showResume?id=${resume.id}">查看</a></td>
+            <td><a href="/admin/showResume?id=${resume.id}">查看</a></td>
             <td><a id="delete">删除</a></td>
         </tr>
     </c:forEach>

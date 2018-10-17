@@ -39,7 +39,7 @@ public class AdminServlet {
     }
     @RequestMapping("inputAllResume")
     public String inputAllResume(){
-        return "forword:allResume";
+        return "forward:allResume";
     }
     @RequestMapping("allResume")
     public String allResume(HttpSession session){
@@ -74,6 +74,15 @@ public class AdminServlet {
     public String editInterviewTime(int id, Date interview){
         adminService.editInterviewById(id,interview);
         return "forward:inputMainView";
+    }
+    @RequestMapping("showResume")
+    public String showResume(int id,HttpSession session){
+        System.out.println(id);
+        Resume resume=adminService.allResumeById(id);
+        resume.setLook("�Ѳ鿴");
+        System.out.println(222);
+        session.setAttribute("resume",resume);
+        return "admin/lookResume";
     }
 
 }

@@ -19,6 +19,11 @@ public class Charge {
         this.dept = dept;
     }
 
+    public Charge(String name, String password) {
+        this.name = name;
+        this.password = password;
+    }
+
     public String getPassword() {
         return password;
     }
@@ -56,6 +61,7 @@ public class Charge {
         return "Charge{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", password='" + password + '\'' +
                 ", dept='" + dept + '\'' +
                 '}';
     }

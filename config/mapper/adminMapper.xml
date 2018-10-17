@@ -5,13 +5,13 @@
         select * from admin where name=#{name} and password=#{password}
     </select>
     <select id="allResume" resultType="com.iotek.xqj.entity.Resume">
-        select r.id id,r.name name,r.sex sex,r.age age,r.time timer.education education,r.phone phone,r.email email,r.positon positon,r.dept dept,r.political political,r.last_job lastJob,r.work_experience workExperience,r.salary salary,r.hobby hobby from resume r where r.state=已提交
+      select r.id id,r.name name,r.sex sex,r.age age,r.time time, r.education education,r.phone phone,r.email email,r.positon positon,r.dept dept,r.political political,r.last_job lastJob,r.work_experience workExperience,r.salary salary,r.habby habby from resume r where r.state='已提交'
     </select>
     <delete id="deleteById" parameterType="int">
-        delete from resume r where r.state=已提交 and id=#{id}
+        delete from resume r where r.state='已提交' and id=#{id}
     </delete>
-    <select id="allResumeById" parameterType="int">
-        select r.id id,r.name name,r.sex sex,r.age age,r.time timer.education education,r.phone phone,r.email email,r.positon positon,r.dept dept,r.political political,r.last_job lastJob,r.work_experience workExperience,r.salary salary,r.hobby hobby from resume r where r.state=已提交 AND
+    <select id="allResumeById" parameterType="int" resultType="com.iotek.xqj.entity.Resume">
+        select r.id id,r.name name,r.sex sex,r.age age,r.time time, r.education education,r.phone phone,r.email email,r.positon positon,r.dept dept,r.political political,r.last_job lastJob,r.work_experience workExperience,r.salary salary,r.habby habby from resume r where r.state='已提交' AND
         r.id=#{id}
     </select>
     <update id="editInterviewById" parameterType="int">

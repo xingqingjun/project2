@@ -16,4 +16,6 @@ public interface VisitorDao {
     public void editResume(int id,Resume resume);
     public void editPassword(int id,String password);
     public Resume lookInform(int id);//查看通知
+    public void editType(int id,String type);//修改类型
+    public void editRecord(int id,String record);//修改录用状态
 }

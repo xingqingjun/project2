@@ -11,7 +11,8 @@
     <title>Title</title>
 </head>
 <body>
-<a href="charge/inform">面试通知</a>
+${sessionScope.de}
+<a href="/charge/inform?de=${sessionScope.de.dept}">面试通知</a>
 
 </body>
 </html>

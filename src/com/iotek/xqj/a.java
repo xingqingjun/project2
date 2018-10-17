@@ -1,11 +1,10 @@
 package com.iotek.xqj;
 
 import com.iotek.xqj.dao.AdminDao;
+import com.iotek.xqj.dao.ChargeDao;
 import com.iotek.xqj.dao.DeptDao;
 import com.iotek.xqj.dao.VisitorDao;
-import com.iotek.xqj.entity.Admin;
-import com.iotek.xqj.entity.Positon;
-import com.iotek.xqj.entity.Visitor;
+import com.iotek.xqj.entity.*;
 import com.iotek.xqj.service.PositonService;
 import com.iotek.xqj.service.VisitorService;
 import org.junit.Test;
@@ -30,10 +29,18 @@ public class a {
     private VisitorService visitorService;
     @Autowired
     private PositonService positonService;
+    @Autowired
+    private ChargeDao chargeDao;
     @Test
     public void findVisitor(){
         Visitor visitor=new Visitor("aaa");
         System.out.println(positonService.queryAllPositon(1));
-        System.out.println(visitorService.lookResume(1));
+        System.out.println(adminDao.allResume());
+        System.out.println(adminDao.allResumeById(3));
+        Charge charge=new Charge("aaa","111");
+        System.out.println(chargeDao.findChargeByNameAndPassword(charge));
+        System.out.println(chargeDao.findResumeByDept("»À ¬≤ø"));
+
+
     }
 }

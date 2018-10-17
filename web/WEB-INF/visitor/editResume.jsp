@@ -51,8 +51,8 @@
                 </c:choose>
                 <c:choose>
                     <c:when test="${'女'eq sessionScope.resume.sex}">
-                        <input id="a1" type="radio" name="sex" value="男">
-                        <input id="a2" type="radio"name="sex" value="女" checked="checked">
+                        男:<input id="a1" type="radio" name="sex" value="男">
+                        女:<input id="a2" type="radio"name="sex" value="女" checked="checked">
                     </c:when>
                 </c:choose>
             </td>

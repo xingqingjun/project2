@@ -7,8 +7,17 @@ public class Visitor {
     private int id;
     private String name;
     private String password;
+    private String type="сн©м";
 
     public Visitor() {
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public Visitor(String name) {

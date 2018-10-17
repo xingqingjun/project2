@@ -2,6 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.iotek.xqj.dao.ChargeDao">
     <select id="findChargeByNameAndPassword" parameterType="com.iotek.xqj.entity.Charge" resultType="com.iotek.xqj.entity.Charge">
-        select c.name,c.password from charge c
+        select * from charge c where name=#{name} and password=#{password}
+    </select>
+    <select id="findResumeByDept" resultType="com.iotek.xqj.entity.Resume">
+        select r.id,r.name,r.dept,r.positon,r.interview_time interviewTime,r.phone from resume r where r.inform='已通知' and r.dept=#{dept}
     </select>
 </mapper>

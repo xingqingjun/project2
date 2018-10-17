@@ -18,5 +18,7 @@ public interface VisitorService {
     public void editResume(int id,Resume resume);//ĞŞ¸Ä¼òÀú
     public void editPassword(int id,String password);//ĞŞ¸ÄÃÜÂë
     public Resume lookInform(int id);
+    public void editType(int id,String type);
+    public void editRecord(int id,String record);
 
 }

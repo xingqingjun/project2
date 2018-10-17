@@ -29,7 +29,13 @@
         update visitor set password=#{password} where id=#{id}
     </update>
     <select id="lookInform">
-        select r.name=#{name},r.positon=#{positon},r.dept=#{dept},r.interview_time interviewTime=#{interviewTime} from resume r where id=#{id} and r.inform=已通知
+        select r.name=#{name},r.positon=#{positon},r.dept=#{dept},r.interview_time interviewTime=#{interviewTime} from resume r where id=#{id} and r.inform='已通知'
     </select>
+    <update id="editType" parameterType="com.iotek.xqj.entity.Visitor">
+        update visitor set type=#{type} where id=#{id}
+    </update>
+    <update id="editRecord" parameterType="com.iotek.xqj.entity.Resume">
+        update resume set record=#{record} where id=#{id}
+    </update>
 
 </mapper>

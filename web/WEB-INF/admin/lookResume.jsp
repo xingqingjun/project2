@@ -76,7 +76,7 @@
     </tr>
     <tr>
         <td><input id="s1" type="hidden" name="id" value="${sessionScope.id}"></td>
-        面试时间:<td colspan="1"><input id="interview" type="date" name="interviewTime"></td>
+        <td colspan="1">面试时间:<input type="date" name="interviewTime"></td>
         <td colspan="1"><input id="time" type="submit"value="面试"></td>
         <td colspan="1"><a href="admin/inputMainView">返回</a> </td>
     </tr>
