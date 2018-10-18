@@ -7,4 +7,5 @@ import com.iotek.xqj.entity.Employee;
  */
 public interface EmployeeDao {
     public void addEmployee(Employee employee);//添加员工
+    public Employee findEmployeeById(int id);//查看员工个人信息
 }

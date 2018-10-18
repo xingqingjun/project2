@@ -12,7 +12,7 @@
 </head>
 <body>
 <h5>${sessionScope.id}</h5>
-<a href="employee/look?id=${sessionScope.id}">查看个人信息</a>
+<a href="/employee/look?id=${sessionScope.id}">查看个人信息</a>
 
 </body>
 </html>

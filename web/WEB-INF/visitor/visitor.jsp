@@ -45,6 +45,7 @@
 <a href="/visitor/positon">input</a>
 <form action="/visitor/addResume">
     <input type="hidden" value="${sessionScope.id}" name="id">
+    ${sessionScope.id}
 <table border="2px">
     <tr>
         <td colspan="4">简历</td>

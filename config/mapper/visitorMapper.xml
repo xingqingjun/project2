@@ -12,9 +12,9 @@
     </insert>
     <insert id="addResume">
         insert into
-        resume(name,sex,age,education,phone,email,positon,dept,political,last_job,work_experience,salary,hobby)
+        resume(id,name,sex,age,education,phone,email,positon,dept,political,last_job,work_experience,salary,habby)
         values
-        (#{name},#{sex},#{age},#{education},#{phone},#{email},#{positon},#{dept},#{political},#{lastJob},#{workExperience},#{salary},#{hobby})
+        (#{id},#{name},#{sex},#{age},#{education},#{phone},#{email},#{positon},#{dept},#{political},#{lastJob},#{workExperience},#{salary},#{habby})
     </insert>
     <select id="findId" resultType="int">
         select visitor.id from visitor  where name=#{name}

@@ -9,4 +9,5 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 public interface EmployeeService {
     public void addEmployee(Employee employee);
+    public Employee findEmployeeById(int id);
 }

@@ -105,7 +105,7 @@ public class VisitorServlet {
     }
     @RequestMapping("addResume")
     public String addResume(Resume resume,HttpSession session){
-        System.out.println(resume);
+        System.out.println(resume.getId());
        // resume.setDept(deptService.findDeptNameById(id));
         visitorService.addResume(resume);
         List<Dept> list= deptService.queryAllDept();
@@ -189,7 +189,7 @@ public class VisitorServlet {
     }
     @RequestMapping("inputMainView")
     public String inputMainView(){
-        return "forward:mainView.jsp";
+        return "redirect:/mainView.jsp";
     }
     @RequestMapping("put")
     public String put(int id){

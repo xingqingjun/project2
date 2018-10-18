@@ -9,6 +9,7 @@
 <html>
 <head>
     <title>Title</title>
+    <script type="text/javascript" src="/jquery-1.10.2.min.js"></script>
     <script>
         $(function () {
             $("#exit").click(function () {

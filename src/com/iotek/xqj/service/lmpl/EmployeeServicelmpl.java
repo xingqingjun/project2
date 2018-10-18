@@ -17,4 +17,9 @@ public class EmployeeServicelmpl implements EmployeeService{
     public void addEmployee(Employee employee) {
         employeeDao.addEmployee(employee);
     }
+
+    @Override
+    public Employee findEmployeeById(int id) {
+        return employeeDao.findEmployeeById(id);
+    }
 }
