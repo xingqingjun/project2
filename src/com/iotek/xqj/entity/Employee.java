@@ -8,6 +8,7 @@ import java.sql.Date;
 public class Employee {
     private int id;
     private String name;
+    private int age;
     private String sex;
     private String dept;
     private String positon;
@@ -15,8 +16,22 @@ public class Employee {
     private String education;
     private String salary;
     private Date time;
+    private String state;//Ô±¹¤×´Ì¬
 
     public Employee() {
+    }
+
+    public Employee(int id, String name, int age, String sex, String dept, String positon, int phone, String education, String salary, Date time) {
+        this.id = id;
+        this.name = name;
+        this.age = age;
+        this.sex = sex;
+        this.dept = dept;
+        this.positon = positon;
+        this.phone = phone;
+        this.education = education;
+        this.salary = salary;
+        this.time = time;
     }
 
     public Employee(int id, String name, String sex, String dept, String positon, int phone, String education, String salary, Date time) {
@@ -103,11 +118,20 @@ public class Employee {
         this.time = time;
     }
 
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
     @Override
     public String toString() {
         return "Employee{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", age=" + age +
                 ", sex='" + sex + '\'' +
                 ", dept='" + dept + '\'' +
                 ", positon='" + positon + '\'' +

@@ -63,8 +63,9 @@ public class VisitorServlet {
             int id=visitorService.findId(visitor.getName());
             System.out.println(222);
             session.setAttribute("id",id);
-            if(visitor1.getType()=="员工"){
-                return "employee/mainview";
+            System.out.println(visitor1.getType());
+            if(visitor1.getType().equals("员工")){
+                return "employee/mainView";
             }
             return "visitor/visitorView";
         }else {
@@ -73,8 +74,9 @@ public class VisitorServlet {
     }
     @RequestMapping("log")
     @ResponseBody
-    public String log(Visitor visitor){
+    public String log(String name,String password){
         System.out.println(111);
+        Visitor visitor=new Visitor(name, password);
         Visitor visitor1=visitorService.findVisitorByNameAndPassword(visitor);
         if(visitor1==null){
             return "fail";
@@ -103,10 +105,22 @@ public class VisitorServlet {
         session.setAttribute("dept",list);
         return "visitor/visitor";
     }
+
+    /**
+     * 添加简历
+     * @param resume
+     * @param session
+     * @return
+     */
     @RequestMapping("addResume")
     public String addResume(Resume resume,HttpSession session){
         System.out.println(resume.getId());
-       // resume.setDept(deptService.findDeptNameById(id));
+        resume.setState("未提交");
+        resume.setInterview("未面试");
+        resume.setLook("未查看");
+        resume.setInform("未通知");
+        resume.setRecord("未录用");
+
         visitorService.addResume(resume);
         List<Dept> list= deptService.queryAllDept();
         session.setAttribute("dept",list);
@@ -134,7 +148,9 @@ public class VisitorServlet {
     @RequestMapping("edt")
     public String adt(int id,HttpSession session){
         List<Dept> dept=deptService.queryAllDept();
+        session.removeAttribute("dept");
         session.setAttribute("dept",dept);
+        System.out.println(dept);
         Resume resume=visitorService.lookResume(id);
         System.out.println(resume);
         session.setAttribute("resume",resume);
@@ -142,10 +158,11 @@ public class VisitorServlet {
     }
     @RequestMapping("positon")
     @ResponseBody
-    public void queryAllPositon(int deptId, PrintWriter printWriter){
-        System.out.println("aaa");
-        System.out.println(deptId);
-        List<Positon> list1=positonService.queryAllPositon(deptId);
+    public void queryAllPositon(String dept, PrintWriter printWriter){
+        System.out.println(dept);
+        int id=deptService.findDeptIdByName(dept);
+        System.out.println(id);
+        List<Positon> list1=positonService.queryAllPositon(id);
         Object list=JSON.toJSON(list1);
         System.out.println(list);
         printWriter.print(list);//职位
@@ -167,14 +184,16 @@ public class VisitorServlet {
 //   }
 
     /**
-     *
-     * @param id
+     *修改简历
      * @param resume
      * @return
      */
     @RequestMapping("editResume")
-    public String editResume(int id,Resume resume){
-        visitorService.editResume(id,resume);
+    public String editResume(Resume resume,HttpSession session){
+        System.out.println(resume.getId());
+        visitorService.editResume(resume);
+        System.out.println(666);
+        System.out.println(resume);
         return "visitor/visitorView";
     }
     @RequestMapping("ePassword")
@@ -196,6 +215,7 @@ public class VisitorServlet {
         Resume resume=visitorService.lookResume(id);
         resume.setState("已提交");
         resume.setTime(new Date(System.currentTimeMillis()));
+        visitorService.editStateAndTime(resume);
         return "forward:visitorView";
     }
     @RequestMapping("lookInform")
@@ -203,6 +223,19 @@ public class VisitorServlet {
         Resume resume=visitorService.lookInform(id);
         session.setAttribute("resume",resume);
         return "visitor/lookInform";
+    }
+    @RequestMapping("hid")
+    @ResponseBody
+    public String hid(int id){
+        System.out.println(id);
+        Resume resume=visitorService.lookResume(id);
+        if(resume!=null){
+            System.out.println(999);
+            return "yes";
+
+        }else {
+            return "no";
+        }
     }
 
 }

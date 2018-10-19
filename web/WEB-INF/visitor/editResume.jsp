@@ -10,29 +10,32 @@
 <html>
 <head>
     <title>Title</title>
+    <script type="text/javascript" src="/jquery-1.10.2.min.js"></script>
     <script>
         $(function () {
-            $("#e1").click(function () {
-                var id=$(".e1").value
+            $("#e1").blur(function () {
+                var dept=$("#e1").val()
+                alert(111)
                 $.ajax({
-                    url:"${pageContext.request.contextPath}/visitor/positon",
+                    url:"/visitor/positon",
                     type:"post",
-                    data:{"id":id},
-                    datatype:"json",
-                    sucess:function (data) {
-                        for(i=0;i<data.length;i++){
-                            $("#e2").append("<option value='"+data[i]+"'>"+data[i]+"</option>")
-                        }
+                    data:{"dept":dept},
+                    dataType:"json",
+                    success:function (data) {
+                        alert(data)
+                        $.each(data,function (i,item) {
+                            $("#e2").append("<option>"+item.name+"</option>")
 
+                        })
                     }
-
                 })
             })
         })
     </script>
 </head>
 <body>
-<form action="visitor/editResume">
+<form action="/visitor/editResume">
+    ${sessionScope.resume.id}
     <input  type="hidden" name="id" value="${sessionScope.resume.id}">
     <table>
         <tr>
@@ -79,11 +82,10 @@
             <td>
                 <select id="e1" name="dept">
                     <c:forEach items="${sessionScope.dept}" var="dept">
-                        <option value="${dept.name}"<c:if test="${sessionScope.resume.dept eq dept.name}">selected</c:if></option>
+                        <option value="${dept.name}"<c:if test="${sessionScope.resume.dept eq dept.name}">selected</c:if>>${dept.name}</option>
                     </c:forEach>
                 </select>
-                <select>
-                    <option id="e2" name="positon" value="${sessionScope.resume.positon}"></option>
+                <select id="e2" name="positon">
                 </select>
             </td>
             <td>
@@ -114,7 +116,7 @@
         </tr>
         <tr>
             <td colspan="2"><input type="submit" value="保存"></td>
-            <td colspan="2"><a href="visitor/visitorView">返回</a> </td>
+            <td colspan="2"><a href="/visitor/visitorView">返回</a> </td>
         </tr>
     </table>
 </form>

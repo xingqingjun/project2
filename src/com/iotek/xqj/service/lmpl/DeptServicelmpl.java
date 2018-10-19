@@ -25,4 +25,9 @@ public class DeptServicelmpl implements DeptService {
     public String findDeptNameById(int id) {
         return deptDao.findDeptNameById(id);
     }
+
+    @Override
+    public int findDeptIdByName(String name) {
+        return deptDao.findDeptIdByName(name);
+    }
 }

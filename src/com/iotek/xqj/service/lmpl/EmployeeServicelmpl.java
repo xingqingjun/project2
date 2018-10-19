@@ -6,6 +6,8 @@ import com.iotek.xqj.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * Created by Machenike on 2018/10/17.
  */
@@ -21,5 +23,15 @@ public class EmployeeServicelmpl implements EmployeeService{
     @Override
     public Employee findEmployeeById(int id) {
         return employeeDao.findEmployeeById(id);
+    }
+
+    @Override
+    public void editEmployee(Employee employee) {
+        employeeDao.editEmployee(employee);
+    }
+
+    @Override
+    public List<Employee> findEmployeeByPositon(String positon) {
+        return employeeDao.findEmployeeByPositon(positon);
     }
 }

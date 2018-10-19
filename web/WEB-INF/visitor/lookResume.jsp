@@ -35,7 +35,7 @@
     </tr>
     <tr>
         <td>应聘职位</td>
-        <td>部门:${sessionScope.resume.positon}职位:${sessionScope.resume.dept}</td>
+        <td>部门:${sessionScope.resume.dept}职位:${sessionScope.resume.positon}</td>
         <td>政治面貌</td>
         <td>${sessionScope.resume.political}</td>
     </tr>
@@ -53,7 +53,8 @@
     </tr>
     <tr>
         <td><a href="/visitor/edt?id=${sessionScope.resume.id}">修改简历</a></td>
-        <td colspan="2"><a href="visitor/visitorView">返回</a> </td>
+        <td colspan="1"><a href="/visitor/put?id=${sessionScope.resume.id}" id="t1">提交</a></td>
+        <td colspan="2"><a href="/visitor/visitorView">返回</a> </td>
     </tr>
 </table>
 

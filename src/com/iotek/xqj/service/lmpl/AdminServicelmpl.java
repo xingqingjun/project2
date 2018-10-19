@@ -46,4 +46,9 @@ public class AdminServicelmpl implements AdminService {
     public int date(Date bTime, Date lTime) {
         return adminDao.date(bTime,lTime);
     }
+
+    @Override
+    public void deleteResume(Resume resume) {
+        adminDao.deleteResume(resume);
+    }
 }

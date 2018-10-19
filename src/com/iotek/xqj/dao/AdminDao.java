@@ -16,4 +16,5 @@ public interface AdminDao {
     public Resume allResumeById(int id);
     public Resume editInterviewById(int id, Date interview);//修改面试时间
     public int date (Date bTime,Date lTime);//两个时间相隔天数
+    public void deleteResume(Resume resume);//删除简历(改成未提交)
 }

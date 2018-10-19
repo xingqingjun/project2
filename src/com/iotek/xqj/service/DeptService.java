@@ -10,4 +10,5 @@ import java.util.List;
 public interface DeptService {
     public List<Dept> queryAllDept();
     public String findDeptNameById(int id);
+    public int findDeptIdByName(String name);
 }

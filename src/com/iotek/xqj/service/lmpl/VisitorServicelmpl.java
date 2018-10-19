@@ -48,8 +48,8 @@ public class VisitorServicelmpl implements VisitorService {
     }
 
     @Override
-    public void editResume(int id,Resume resume) {
-        visitorDao.editResume(id,resume);
+    public void editResume(Resume resume) {
+        visitorDao.editResume(resume);
     }
 
     @Override
@@ -71,5 +71,17 @@ public class VisitorServicelmpl implements VisitorService {
     public void editRecord(int id, String record) {
         visitorDao.editRecord(id,record);
     }
+
+    @Override
+    public void editStateAndTime(Resume resume) {
+        visitorDao.editStateAndTime(resume);
+    }
+
+    @Override
+    public void editLook(Resume resume) {
+        visitorDao.editLook(resume);
+    }
+
+
 
 }

@@ -15,10 +15,14 @@ public interface VisitorService {
     public void addVisitor(Visitor visitor);
     public void addResume(Resume resume);
     public Resume lookResume(int id);//查看自己简历通过id关联
-    public void editResume(int id,Resume resume);//修改简历
+    public void editResume(Resume resume);//修改简历
     public void editPassword(int id,String password);//修改密码
     public Resume lookInform(int id);
     public void editType(int id,String type);
     public void editRecord(int id,String record);
+    public void editStateAndTime(Resume resume);
+    public void editLook(Resume resume);
+
+
 
 }

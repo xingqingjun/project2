@@ -12,10 +12,12 @@
     <title>员工信息</title>
 </head>
 <body>
-<table>
+<form action="/employee/edit">
+    <input type="hidden" value="${sessionScope.employee.id}" name="id">
+<table border="2px">
     <tr>
         <td>真实姓名</td>
-        <td><input type="text" name="name" value="${sessionScope.employee.name}"></td>
+        <td>${sessionScope.employee.name}></td>
         <td>性别</td>
         <td>${sessionScope.employee.sex}</td>
     </tr>
@@ -32,10 +34,13 @@
         <td>${sessionScope.employee.salary}</td>
     </tr>
     <tr>
-        <td colspan="2">入职时间</td>
-        <td colspan="2">${sessionScope.employee.time}</td>
+        <td>入职时间</td>
+        <td>${sessionScope.employee.time}</td>
+        <td><input type="submit" value="修改"></td>
+        <td><a href="/employee/inputMainview">返回员工主界面</a></td>
     </tr>
 </table>
+</form>
 
 </body>
 </html>

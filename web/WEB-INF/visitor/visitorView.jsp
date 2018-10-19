@@ -22,11 +22,31 @@
                 }
             })
         })
+        $(function () {
+            $("#hid").click(function () {
+                var id=$("#d1").val()
+                alert(id)
+                $.ajax({
+                    url:"${pageContext.request.contextPath}/visitor/hid",
+                    data:{"id":id},
+                    type:"post",
+                    dataType:"text",
+                    success:function (data) {
+                        if(data=="yes"){
+                            alert("已经有简历")
+                           return false;
+                        }
+                    }
+                })
+            })
+
+        })
     </script>
 </head>
 <body>
 <h5 style="color:red">游客:${sessionScope.id}</h5>
-<a href="/visitor/aResume?id=${sessionScope.id}">添加简历</a>
+<input id="d1" type="hidden" value="${sessionScope.id}">
+<a href="/visitor/aResume?id=${sessionScope.id}" id="hid">添加简历</a>
 <a href="/visitor/showResume?id=${sessionScope.id}">查看简历</a>
 <a href="/visitor/edt?id=${sessionScope.id}">修改简历</a>
 <a href="/visitor/ePassword?${sessionScope.id}">修改密码</a>

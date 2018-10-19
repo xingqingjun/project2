@@ -55,129 +55,9 @@ public class Resume {
         this.record = record;
     }
 
-    public Resume(int id, String name, String sex, int age, String education, int phone, String email, String dept, String positon, String political, String lastJob, String workExperience, String salary, String habby, String state, Date time, String interview, String look, Date interviewTime, String inform) {
+    public Resume(int id, String name) {
         this.id = id;
         this.name = name;
-        this.sex = sex;
-        this.age = age;
-        this.education = education;
-        this.phone = phone;
-        this.email = email;
-        this.dept = dept;
-        this.positon = positon;
-        this.political = political;
-        this.lastJob = lastJob;
-        this.workExperience = workExperience;
-        this.salary = salary;
-        this.habby = habby;
-        this.state = state;
-        this.time = time;
-        this.interview = interview;
-        this.look = look;
-        this.interviewTime = interviewTime;
-        this.inform = inform;
-    }
-
-    public Date getInterviewTime() {
-        return interviewTime;
-    }
-
-    public void setInterviewTime(Date interviewTime) {
-        this.interviewTime = interviewTime;
-    }
-
-    public String getInform() {
-        return inform;
-    }
-
-    public void setInform(String inform) {
-        this.inform = inform;
-    }
-
-    public Date getTime() {
-        return time;
-    }
-
-    public String getInterview() {
-        return interview;
-    }
-
-    public void setInterview(String interview) {
-        this.interview = interview;
-    }
-
-    public String getLook() {
-        return look;
-    }
-
-    public void setLook(String look) {
-        this.look = look;
-    }
-
-    public Resume(int id, String name, String sex, int age, String education, int phone, String email, String dept, String positon, String political, String lastJob, String workExperience, String salary, String habby, String state, Date time, String interview, String look) {
-        this.id = id;
-        this.name = name;
-        this.sex = sex;
-        this.age = age;
-        this.education = education;
-        this.phone = phone;
-        this.email = email;
-        this.dept = dept;
-        this.positon = positon;
-        this.political = political;
-        this.lastJob = lastJob;
-        this.workExperience = workExperience;
-        this.salary = salary;
-        this.habby = habby;
-        this.state = state;
-        this.time = time;
-        this.interview = interview;
-        this.look = look;
-    }
-
-    public void setTime(Date time) {
-        this.time = time;
-    }
-
-    public Resume(int id, String name, String sex, int age, String education, int phone, String email, String dept, String positon, String political, String lastJob, String workExperience, String salary, String habby) {
-        this.id = id;
-        this.name = name;
-        this.sex = sex;
-        this.age = age;
-        this.education = education;
-        this.phone = phone;
-        this.email = email;
-        this.dept = dept;
-        this.positon = positon;
-        this.political = political;
-        this.lastJob = lastJob;
-        this.workExperience = workExperience;
-        this.salary = salary;
-        this.habby = habby;
-    }
-
-    public String getState() {
-        return state;
-    }
-
-    public void setState(String state) {
-        this.state = state;
-    }
-
-    public Resume(String name, String sex, int age, String education, int phone, String email, String dept, String positon, String political, String lastJob, String workExperience, String salary, String habby) {
-        this.name = name;
-        this.sex = sex;
-        this.age = age;
-        this.education = education;
-        this.phone = phone;
-        this.email = email;
-        this.dept = dept;
-        this.positon = positon;
-        this.political = political;
-        this.lastJob = lastJob;
-        this.workExperience = workExperience;
-        this.salary = salary;
-        this.habby = habby;
     }
 
     public int getId() {
@@ -292,6 +172,62 @@ public class Resume {
         this.habby = habby;
     }
 
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public Date getTime() {
+        return time;
+    }
+
+    public void setTime(Date time) {
+        this.time = time;
+    }
+
+    public String getInterview() {
+        return interview;
+    }
+
+    public void setInterview(String interview) {
+        this.interview = interview;
+    }
+
+    public String getLook() {
+        return look;
+    }
+
+    public void setLook(String look) {
+        this.look = look;
+    }
+
+    public Date getInterviewTime() {
+        return interviewTime;
+    }
+
+    public void setInterviewTime(Date interviewTime) {
+        this.interviewTime = interviewTime;
+    }
+
+    public String getInform() {
+        return inform;
+    }
+
+    public void setInform(String inform) {
+        this.inform = inform;
+    }
+
+    public String getRecord() {
+        return record;
+    }
+
+    public void setRecord(String record) {
+        this.record = record;
+    }
+
     @Override
     public String toString() {
         return "Resume{" +
@@ -309,6 +245,13 @@ public class Resume {
                 ", workExperience='" + workExperience + '\'' +
                 ", salary='" + salary + '\'' +
                 ", habby='" + habby + '\'' +
+                ", state='" + state + '\'' +
+                ", time=" + time +
+                ", interview='" + interview + '\'' +
+                ", look='" + look + '\'' +
+                ", interviewTime=" + interviewTime +
+                ", inform='" + inform + '\'' +
+                ", record='" + record + '\'' +
                 '}';
     }
 }

@@ -12,6 +12,7 @@
 </head>
 <body>
 <a href="/admin/inputAllResume">查看简历</a>
+<a href="/admin/inputManageDept">管理部门</a>
 
 </body>
 </html>

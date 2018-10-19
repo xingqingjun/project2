@@ -22,4 +22,14 @@ public class EmployeeServlet {
         session.setAttribute("employee",employee);
         return "employee/look";
     }
+    @RequestMapping("edit")
+    public String edit(Employee employee){
+        System.out.println(employee);
+        employeeService.editEmployee(employee);
+        return "forward:look";
+    }
+    @RequestMapping("inputMainview")
+    public String inputMainview(){
+        return "employee/mainView";
+    }
 }

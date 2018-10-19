@@ -12,18 +12,18 @@
     </insert>
     <insert id="addResume">
         insert into
-        resume(id,name,sex,age,education,phone,email,positon,dept,political,last_job,work_experience,salary,habby)
+        resume(id,name,sex,age,education,phone,email,positon,dept,political,last_job,work_experience,salary,habby,state,time,interview,look,interview_time,inform,record)
         values
-        (#{id},#{name},#{sex},#{age},#{education},#{phone},#{email},#{positon},#{dept},#{political},#{lastJob},#{workExperience},#{salary},#{habby})
+        (#{id},#{name},#{sex},#{age},#{education},#{phone},#{email},#{positon},#{dept},#{political},#{lastJob},#{workExperience},#{salary},#{habby},#{state},#{time},#{interview},#{look},#{interviewTime},#{inform},#{record})
     </insert>
     <select id="findId" resultType="int">
         select visitor.id from visitor  where name=#{name}
     </select>
     <select id="lookResume" resultType="com.iotek.xqj.entity.Resume" parameterType="int">
-        select r.name name,r.sex sex,r.age age,r.education education,r.phone phone,r.email email,r.positon positon,r.dept dept,r.political political,r.last_job lastJob,r.work_experience workExperience,r.salary salary,r.habby habby from resume r where r.id=#{id}
+        select r.id id,r.name name,r.sex sex,r.age age,r.education education,r.phone phone,r.email email,r.positon positon,r.dept dept,r.political political,r.last_job lastJob,r.work_experience workExperience,r.salary salary,r.habby habby from resume r where r.id=#{id}
     </select>
-    <update id="editResume">
-        update resume r set r.name=#{name},r.sex=#{sex},r.age=#{age},r.education=#{education},r.phont=#{phone},r.email=#{email},r.positon=#{positon},r.dept=#{dept},r.political=#{political},r.last_job lastJob=#{lastJob},r.work_experience workExperience=#{workExperience},r.salary=#{salary},r.habby=#{habby} where id=#{id}
+    <update id="editResume" parameterType="com.iotek.xqj.entity.Resume">
+        update resume r set r.name=#{name},r.sex=#{sex},r.age=#{age},r.education=#{education},r.phone=#{phone},r.email=#{email},r.positon=#{positon},r.dept=#{dept},r.political=#{political},r.last_job=#{lastJob},r.work_experience=#{workExperience},r.salary=#{salary},r.habby=#{habby} where r.id=#{id}
     </update>
     <update id="editPassword" parameterType="int">
         update visitor set password=#{password} where id=#{id}
@@ -36,6 +36,15 @@
     </update>
     <update id="editRecord" parameterType="com.iotek.xqj.entity.Resume">
         update resume set record=#{record} where id=#{id}
+    </update>
+    <update id="editStateAndTime" parameterType="com.iotek.xqj.entity.Resume">
+        update resume set state=#{state},time=#{time} where id=#{id}
+    </update>
+    <update id="editLook" parameterType="com.iotek.xqj.entity.Resume">
+        update resume set look=#{look} where id=#{id}
+    </update>
+    <update id="deleteResume" parameterType="com.iotek.xqj.entity.Resume">
+        update resume set state=#{state} where id=#{id}
     </update>
 
 </mapper>

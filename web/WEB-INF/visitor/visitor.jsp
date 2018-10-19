@@ -14,25 +14,20 @@
     <script>
         $(function () {
           $("#e1").blur(function () {
-              var id=$("#e1").val()
+              var dept=$("#e1").val()
               alert(111)
              $.ajax({
                  url:"/visitor/positon",
                  type:"post",
-                 data:{"deptId":id},
-                 datatype:"json",
+                 data:{"dept":dept},
+                 dataType:"json",
                 success:function (data) {
                      alert(data)
-//                     $.each(data,function (idx,item) {
-//                         alert(111)
-//                         alert(item.name);
-//                         str+="<option>"+item.name+"</option>"
-//                        /* $("#e2").append("<option>"+items.name+"</optio>"*/
-//                     })
-//                   $(str).appendTo(".e2")
-                    $.each(data,function (t,n) {
+                    var $str=data
+                    alert($str)
+                    $.each($str,function (i,item) {
                         alert(111)
-                        $("#e2").append("<option>"+n.name+"</optio>")
+                        $("#e2").append("<option>"+item.name+"</option>")
 
                     })
                 }
@@ -42,7 +37,6 @@
     </script>
 </head>
 <body>
-<a href="/visitor/positon">input</a>
 <form action="/visitor/addResume">
     <input type="hidden" value="${sessionScope.id}" name="id">
     ${sessionScope.id}
@@ -70,7 +64,7 @@
     </tr>
     <tr>
         <td>联系方式</td>
-        <td><input type="text" name="number"></td>
+        <td><input type="text" name="phone"></td>
         <td>e-mail</td>
         <td><input type="text" name="email"></td>
     </tr>
@@ -79,10 +73,10 @@
         <td>
             部门:<select id="e1" name="dept">
                 <c:forEach items="${sessionScope.dept}" var="dept">
-                    <option value="${dept.id}">${dept.name}</option>
+                    <option value="${dept.name}">${dept.name}</option>
                 </c:forEach>
-            职位:</select>
-            <select id="e2" name="positon">
+            </select>
+            职位:<select id="e2" name="positon">
             </select>
         </td>
         <td>

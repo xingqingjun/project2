@@ -6,6 +6,7 @@ package com.iotek.xqj.entity;
 public class Dept {
     private int id;
     private String name;
+    private Dept time;//创建时间
 
     public Dept() {
     }
@@ -13,6 +14,20 @@ public class Dept {
     public Dept(int id, String name) {
         this.id = id;
         this.name = name;
+    }
+
+    public Dept(int id, String name, Dept time) {
+        this.id = id;
+        this.name = name;
+        this.time = time;
+    }
+
+    public Dept getTime() {
+        return time;
+    }
+
+    public void setTime(Dept time) {
+        this.time = time;
     }
 
     public int getId() {

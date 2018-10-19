@@ -16,4 +16,5 @@ public interface AdminService {
     public Resume allResumeById(int id);
     public Resume editInterviewById(int id, Date interview);
     public int date (Date bTime,Date lTime);
+    public void deleteResume(Resume resume);
 }

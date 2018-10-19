@@ -1,8 +1,10 @@
 package com.iotek.xqj.controller;
 
-import com.iotek.xqj.entity.Admin;
-import com.iotek.xqj.entity.Resume;
+import com.iotek.xqj.entity.*;
 import com.iotek.xqj.service.AdminService;
+import com.iotek.xqj.service.DeptService;
+import com.iotek.xqj.service.EmployeeService;
+import com.iotek.xqj.service.PositonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,6 +22,12 @@ import java.util.List;
 public class AdminServlet {
     @Autowired
     private AdminService adminService;
+    @Autowired
+    private DeptService deptService;
+    @Autowired
+    private PositonService positonService;
+    @Autowired
+    private EmployeeService employeeService;
     @RequestMapping("inputLogin")
     public String inputLogin(){
         return "admin/login";
@@ -50,7 +58,11 @@ public class AdminServlet {
     @RequestMapping("remove")
     @ResponseBody
     public String remove(int id){
-        adminService.deleteById(id);
+        Resume resume=adminService.allResumeById(id);
+        resume.setState("δ�ύ");
+        Resume resume1=new Resume(id,resume.getState());
+        System.out.println(resume1);
+        adminService.deleteResume(resume1);
         return "success";
     }
     @RequestMapping("lookResume")
@@ -83,6 +95,33 @@ public class AdminServlet {
         System.out.println(222);
         session.setAttribute("resume",resume);
         return "admin/lookResume";
+    }
+    @RequestMapping("inputManageDept")
+    public String manageDept(){
+        return "admin/manageDept";
+    }
+    @RequestMapping("lookDept")
+    public String lookDept(HttpSession session){
+        List<Dept> dept=deptService.queryAllDept();
+        session.setAttribute("dept",dept);
+        return "admin/lookDept";
+    }
+    @RequestMapping("lookPositon")
+    public String lookPositon(int id,HttpSession session){
+        List<Positon> positon=positonService.queryAllPositon(id);
+        System.out.println(positon);
+        System.out.println(111);
+        //String dept=deptService.findDeptNameById(id);
+        //session.setAttribute("dept",dept);
+        session.setAttribute("positon",positon);
+        return "admin/lookPositon";
+    }
+    @RequestMapping("lookEmployee")
+    public String lookEmployee(String positon,HttpSession session){
+        List<Employee> employees=employeeService.findEmployeeByPositon(positon);
+        System.out.println(employees);
+        session.setAttribute("employees",employees);
+        return "admin/lookEmployee";
     }
 
 }

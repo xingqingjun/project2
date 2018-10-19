@@ -7,4 +7,7 @@
     <select id="findDeptNameById" parameterType="int">
         select d.name from dept d where id=#{id}
     </select>
+    <select id="findDeptIdByName" parameterType="com.iotek.xqj.entity.Dept" resultType="int">
+        select t.id from dept t where t.name=#{name}
+    </select>
 </mapper>

@@ -39,7 +39,10 @@ public class a {
         System.out.println(adminDao.allResumeById(3));
         Charge charge=new Charge("aaa","111");
         System.out.println(chargeDao.findChargeByNameAndPassword(charge));
-        System.out.println(chargeDao.findResumeByDept("人事部"));
+
+        System.out.println(deptDao.findDeptIdByName("人事部"));
+        Resume resume=new Resume(3,"555");
+        visitorService.editResume(resume);
 
 
     }
