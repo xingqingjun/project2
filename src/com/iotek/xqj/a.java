@@ -5,6 +5,7 @@ import com.iotek.xqj.dao.ChargeDao;
 import com.iotek.xqj.dao.DeptDao;
 import com.iotek.xqj.dao.VisitorDao;
 import com.iotek.xqj.entity.*;
+import com.iotek.xqj.service.EmployeeService;
 import com.iotek.xqj.service.PositonService;
 import com.iotek.xqj.service.VisitorService;
 import org.junit.Test;
@@ -31,18 +32,13 @@ public class a {
     private PositonService positonService;
     @Autowired
     private ChargeDao chargeDao;
+    @Autowired
+    private EmployeeService employeeService;
     @Test
     public void findVisitor(){
-        Visitor visitor=new Visitor("aaa");
-        System.out.println(positonService.queryAllPositon(1));
-        System.out.println(adminDao.allResume());
-        System.out.println(adminDao.allResumeById(3));
-        Charge charge=new Charge("aaa","111");
-        System.out.println(chargeDao.findChargeByNameAndPassword(charge));
 
-        System.out.println(deptDao.findDeptIdByName("人事部"));
-        Resume resume=new Resume(3,"555");
-        visitorService.editResume(resume);
+        System.out.println(employeeService.findEmployeeByPositon("人事部经理"));
+        System.out.println(deptDao.findDeptNameById(4));
 
 
     }

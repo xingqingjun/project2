@@ -21,6 +21,14 @@ public class Employee {
     public Employee() {
     }
 
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
     public Employee(int id, String name, int age, String sex, String dept, String positon, int phone, String education, String salary, Date time) {
         this.id = id;
         this.name = name;

@@ -12,7 +12,8 @@
 </head>
 <body>
 <a href="/admin/lookDept">查看部门</a>
-<a>增加部门</a>
+<a href="/admin/inputAddDept">增加部门</a>
+
 
 
 </body>

@@ -10,4 +10,8 @@ import java.util.List;
 public interface PositonService {
     public List<Positon> queryAllPositon(int deptId);
     public List<Positon> AllPositon();
+    public Positon findPositon(int id);
+    public void deletePositonById(int id);
+    public void addPositon(Positon positon);
+    public void editPositonById(Positon positon);
 }

@@ -2,9 +2,21 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.iotek.xqj.dao.PositonDao">
     <select id="queryAllPositon" resultType="com.iotek.xqj.entity.Positon" parameterType="int">
-        select p.id,p.name,p.dept_id deptId from positon p where p.dept_id =#{deptId}
+        select p.id,p.name,p.dept_id deptId,p.time from positon p where p.dept_id =#{deptId}
     </select>
     <select id="AllPositon" resultType="com.iotek.xqj.entity.Positon">
         select * from positon
     </select>
+    <select id="findPositon" parameterType="int" resultType="com.iotek.xqj.entity.Positon">
+        select p.id,p.name,p.dept_id deptId,p.time from positon p where id=#{id}
+    </select>
+    <delete id="deletePositonById" parameterType="int">
+        delete from positon where id=#{id}
+    </delete>
+    <insert id="addPositon" parameterType="com.iotek.xqj.entity.Positon">
+        insert into positon(name,dept_id,time) values(#{name},#{deptId},#{time})
+    </insert>
+    <update id="editPositonById" parameterType="int">
+        update positon set name=#{name} dept_id deptId=#{deptId} where id=#{id}
+    </update>
 </mapper>

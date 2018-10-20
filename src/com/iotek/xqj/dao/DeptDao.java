@@ -9,6 +9,9 @@ import java.util.List;
  */
 public interface DeptDao {
     public List<Dept> queryAllDept();
-    public String findDeptNameById(int id);
+    public Dept findDeptNameById(int id);
     public int findDeptIdByName(String name);
+    public void addDept(Dept dept);//添加部门
+    public void deleteDeptById(int id);//删除部门
+    public void editDept(Dept dept);//修改部门
 }

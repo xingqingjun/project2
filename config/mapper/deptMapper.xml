@@ -4,10 +4,20 @@
     <select id="queryAllDept" resultType="com.iotek.xqj.entity.Dept">
         select * from dept
     </select>
-    <select id="findDeptNameById" parameterType="int">
-        select d.name from dept d where id=#{id}
+    <select id="findDeptNameById" parameterType="int" resultType="com.iotek.xqj.entity.Dept">
+        select d.id,d.name,d.time from dept d where id=#{id}
     </select>
     <select id="findDeptIdByName" parameterType="com.iotek.xqj.entity.Dept" resultType="int">
         select t.id from dept t where t.name=#{name}
     </select>
+    <insert id="addDept" parameterType="com.iotek.xqj.entity.Dept">
+        insert into dept(name,time) values(#{name},#{time})
+    </insert>
+    <delete id="deleteDeptById" parameterType="int">
+        delete from dept where id=#{id}
+    </delete>
+    <update id="editDept" parameterType="com.iotek.xqj.entity.Dept">
+        update dept set name=#{name} where id=#{id}
+    </update>
+
 </mapper>

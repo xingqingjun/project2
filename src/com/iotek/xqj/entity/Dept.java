@@ -1,32 +1,26 @@
 package com.iotek.xqj.entity;
 
+import java.sql.Date;
+
 /**
  * Created by Machenike on 2018/10/12.
  */
 public class Dept {
     private int id;
     private String name;
-    private Dept time;//创建时间
+    private Date time;//创建时间
 
     public Dept() {
     }
 
-    public Dept(int id, String name) {
-        this.id = id;
-        this.name = name;
-    }
-
-    public Dept(int id, String name, Dept time) {
+    public Dept(int id, String name, Date time) {
         this.id = id;
         this.name = name;
         this.time = time;
     }
 
-    public Dept getTime() {
-        return time;
-    }
-
-    public void setTime(Dept time) {
+    public Dept(String name, Date time) {
+        this.name = name;
         this.time = time;
     }
 
@@ -46,11 +40,20 @@ public class Dept {
         this.name = name;
     }
 
+    public Date getTime() {
+        return time;
+    }
+
+    public void setTime(Date time) {
+        this.time = time;
+    }
+
     @Override
     public String toString() {
         return "Dept{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", time=" + time +
                 '}';
     }
 }

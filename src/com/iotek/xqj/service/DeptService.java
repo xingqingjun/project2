@@ -9,6 +9,9 @@ import java.util.List;
  */
 public interface DeptService {
     public List<Dept> queryAllDept();
-    public String findDeptNameById(int id);
+    public Dept findDeptNameById(int id);
     public int findDeptIdByName(String name);
+    public void addDept(Dept dept);
+    public void deleteDeptById(int id);
+    public void editDept(Dept dept);
 }

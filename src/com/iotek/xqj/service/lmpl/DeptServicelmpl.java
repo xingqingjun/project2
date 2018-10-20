@@ -22,12 +22,27 @@ public class DeptServicelmpl implements DeptService {
     }
 
     @Override
-    public String findDeptNameById(int id) {
+    public Dept findDeptNameById(int id) {
         return deptDao.findDeptNameById(id);
     }
 
     @Override
     public int findDeptIdByName(String name) {
         return deptDao.findDeptIdByName(name);
+    }
+
+    @Override
+    public void addDept(Dept dept) {
+        deptDao.addDept(dept);
+    }
+
+    @Override
+    public void deleteDeptById(int id) {
+        deptDao.deleteDeptById(id);
+    }
+
+    @Override
+    public void editDept(Dept dept) {
+        deptDao.editDept(dept);
     }
 }

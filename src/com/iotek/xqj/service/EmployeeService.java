@@ -14,4 +14,5 @@ public interface EmployeeService {
     public Employee findEmployeeById(int id);
     public void editEmployee(Employee employee);
     public List<Employee> findEmployeeByPositon(String positon);
+    public List<Employee> findEmployeeByDept(String dept);
 }

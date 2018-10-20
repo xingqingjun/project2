@@ -34,4 +34,9 @@ public class EmployeeServicelmpl implements EmployeeService{
     public List<Employee> findEmployeeByPositon(String positon) {
         return employeeDao.findEmployeeByPositon(positon);
     }
+
+    @Override
+    public List<Employee> findEmployeeByDept(String dept) {
+        return employeeDao.findEmployeeByDept(dept);
+    }
 }

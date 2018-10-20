@@ -46,7 +46,7 @@
                     data: {"name":name,"password":password},
                     dataType:"text",
                     success:function (data) {
-                        if(data==fail){
+                        if(data=="fail"){
                             $("#s2").text("登录失败")
                             return false
                         }

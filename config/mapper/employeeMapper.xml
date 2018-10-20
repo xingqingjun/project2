@@ -10,7 +10,10 @@
     <update id="editEmployee" parameterType="com.iotek.xqj.entity.Employee">
         update employee set age=#{age},phone=#{phone} where id=#{id}
     </update>
-    <select id="findEmployeeByPositon">
+    <select id="findEmployeeByPositon" resultType="com.iotek.xqj.entity.Employee">
         select * from employee where positon=#{positon}
+    </select>
+    <select id="findEmployeeByDept" resultType="com.iotek.xqj.entity.Employee">
+        select * from employee where dept=#{dept}
     </select>
 </mapper>
