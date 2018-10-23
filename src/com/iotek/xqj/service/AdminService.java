@@ -2,6 +2,7 @@ package com.iotek.xqj.service;
 
 import com.iotek.xqj.entity.Admin;
 import com.iotek.xqj.entity.Resume;
+import com.iotek.xqj.entity.Training;
 
 import java.sql.Date;
 import java.util.List;
@@ -17,4 +18,8 @@ public interface AdminService {
     public Resume editInterviewById(int id, Date interview);
     public int date (Date bTime,Date lTime);
     public void deleteResume(Resume resume);
+    public void addTraining(Training training);//Ìí¼ÓÅàÑµ
+    public void deleteTraining(int id);//É¾³ıÅàÑµ
+    public void editTraining(Training training);//ĞŞ¸ÄÅàÑµ
+    public List<Training> findTraining();//²é¿´ÅàÑµ
 }

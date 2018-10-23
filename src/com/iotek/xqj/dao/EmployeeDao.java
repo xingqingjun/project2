@@ -1,7 +1,9 @@
 package com.iotek.xqj.dao;
 
 import com.iotek.xqj.entity.Employee;
+import com.iotek.xqj.entity.WorkRecord;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -13,4 +15,12 @@ public interface EmployeeDao {
     public void editEmployee(Employee employee);//修改个人信息
     public List<Employee> findEmployeeByPositon(String positon);
     public List<Employee> findEmployeeByDept(String dept);//通过部门查找
+    public void addWorkRecord(WorkRecord workRecord);//添加考勤(正常打卡)
+    public void addWorkRecord1(WorkRecord workRecord);//(迟到)
+    public void addWorkRecord2(WorkRecord workRecord);//(旷工)
+    public WorkRecord findWorkRecordByTime(WorkRecord workRecord);//通过考勤时间查询
+    public void editWorkRecord(WorkRecord workRecord);//更新下班考勤
+    public List<WorkRecord> findWorkRecordById(int id);//查询
+    public List<WorkRecord> findWork(WorkRecord workRecord);//模糊查询
+
 }

@@ -16,4 +16,26 @@
     <select id="findEmployeeByDept" resultType="com.iotek.xqj.entity.Employee">
         select * from employee where dept=#{dept}
     </select>
+    <insert id="addWorkRecord" parameterType="com.iotek.xqj.entity.WorkRecord">
+        insert into work(id,name,time,clock_in) values(#{id},#{name},#{time},#{clockIn})
+    </insert>
+    <insert id="addWorkRecord1" parameterType="com.iotek.xqj.entity.WorkRecord">
+        insert into work(id,name,time,clock_in,late) values(#{id},#{name},#{time},#{clockIn},#{late})
+    </insert>
+    <insert id="addWorkRecord2" parameterType="com.iotek.xqj.entity.WorkRecord">
+        insert into work(id,name,time,clock_in,absent) values(#{id},#{name},#{time},#{clockIn},#{absent})
+    </insert>
+    <select id="findWorkRecordByTime" parameterType="com.iotek.xqj.entity.WorkRecord" resultType="com.iotek.xqj.entity.WorkRecord">
+        select w.id,w.name,w.time,w.clock_in clockIn,w.late,w.absent,w.leave,w.over_time overTime from work w where w.time=#{time} and w.id=#{id}
+    </select>
+    <update id="editWorkRecord" parameterType="com.iotek.xqj.entity.WorkRecord">
+        update work w set w.clock_out=#{clockOut},w.absent=#{absent},w.leave=#{leave},w.over_time=#{overTime} where w.id=#{id} and w.time=#{time}
+    </update>
+    <select id="findWorkRecordById" parameterType="com.iotek.xqj.entity.WorkRecord" resultType="com.iotek.xqj.entity.WorkRecord">
+        select w.id,w.name,w.time,w.clock_in clockIn,w.late,w.absent,w.leave,w.over_time overTime from work w where w.id=#{id}
+    </select>
+    <select id="findWork" parameterType="com.iotek.xqj.entity.WorkRecord" resultType="com.iotek.xqj.entity.WorkRecord">
+        select w.id,w.name,w.time,w.clock_in clockIn,w.late,w.absent,w.leave,w.over_time overTime from work w where w.time like'%'#{time}'%' and w.id=#{id}
+    </select>
+
 </mapper>

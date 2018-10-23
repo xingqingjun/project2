@@ -39,6 +39,7 @@
             <td>${employee.salary}</td>
             <td>${employee.time}</td>
             <td>${employee.state}</td>
+            <td><a>开除员工</a></td>
         </tr>
     </c:forEach>
 

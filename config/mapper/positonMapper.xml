@@ -16,7 +16,7 @@
     <insert id="addPositon" parameterType="com.iotek.xqj.entity.Positon">
         insert into positon(name,dept_id,time) values(#{name},#{deptId},#{time})
     </insert>
-    <update id="editPositonById" parameterType="int">
-        update positon set name=#{name} dept_id deptId=#{deptId} where id=#{id}
+    <update id="editPositonById" parameterType="com.iotek.xqj.entity.Positon">
+        update positon p set p.name=#{name},p.dept_id=#{deptId} where id=#{id}
     </update>
 </mapper>

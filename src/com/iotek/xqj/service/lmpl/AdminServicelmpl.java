@@ -3,6 +3,7 @@ package com.iotek.xqj.service.lmpl;
 import com.iotek.xqj.dao.AdminDao;
 import com.iotek.xqj.entity.Admin;
 import com.iotek.xqj.entity.Resume;
+import com.iotek.xqj.entity.Training;
 import com.iotek.xqj.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -50,5 +51,25 @@ public class AdminServicelmpl implements AdminService {
     @Override
     public void deleteResume(Resume resume) {
         adminDao.deleteResume(resume);
+    }
+
+    @Override
+    public void addTraining(Training training) {
+        adminDao.addTraining(training);
+    }
+
+    @Override
+    public void deleteTraining(int id) {
+        adminDao.deleteTraining(id);
+    }
+
+    @Override
+    public void editTraining(Training training) {
+        adminDao.editTraining(training);
+    }
+
+    @Override
+    public List<Training> findTraining() {
+        return adminDao.findTraining();
     }
 }

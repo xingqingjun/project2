@@ -265,5 +265,15 @@ public class AdminServlet {
         positonService.editPositonById(positon);
         return "admin/lookDept";
     }
+    @RequestMapping("train")
+    public String train(){
+        return "admin/train";
+    }
+    @RequestMapping("inputLookTrain")
+    public String inputLookTrain(HttpSession session){
+        List<Training> train=adminService.findTraining();
+        session.setAttribute("train",train);
+        return "admin/lookTrain";
+    }
 
 }

@@ -15,9 +15,21 @@
         r.id=#{id}
     </select>
     <update id="editInterviewById" parameterType="int">
-        UPDATE  resume r set r.interview_time interviewTime=#{interviewTime} where id=#{id} and r.state=已提交
+        UPDATE  resume r set r.interview_time interviewTime=#{interviewTime} where id=#{id} and r.state='已提交'
     </update>
     <select id="date">
         select datediff(day, #{time},#{interview});
+    </select>
+    <insert id="addTraining" parameterType="com.iotek.xqj.entity.Training">
+        insert into training(name,dept,time) VALUE (#{name},#{dept},#{time})
+    </insert>
+    <delete id="deleteTraining" parameterType="int">
+        delete from training where id=#{id}
+    </delete>
+    <update id="editTraining" parameterType="com.iotek.xqj.entity.Training">
+        update training set name=#{name},dept=#{dept},time=#{time} where id=#{id}
+    </update>
+    <select id="findTraining"  resultType="com.iotek.xqj.entity.Training">
+        select * from training
     </select>
 </mapper>

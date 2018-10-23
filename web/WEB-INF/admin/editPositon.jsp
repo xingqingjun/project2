@@ -15,6 +15,7 @@
     <input type="hidden" value="${sessionScope.positon.id}" name="id">
     职位名字<input type="text" name="name" value="${sessionScope.positon.name}"><br>
     部门id<input type="text" name="deptId" value="${sessionScope.positon.deptId}">
+    <input type="submit" value="修改职位">
 </form>
 
 </body>
